@@ -4,6 +4,7 @@
 
  1. Clonar el repositorio:
  bash  git clone https://github.com/Aramis09/technical-test--Nimble-Gravity 
+ 2.Crear .env con las copiando las variables del .env.example
  2. Instalar las dependencias:
  bash  npm install 
  3. Levantar el entorno de desarrollo:
