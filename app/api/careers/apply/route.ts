@@ -6,7 +6,9 @@ export const applyToJobBodySchema = z.object({
   uuid: z.string(),
   jobId: z.string(),
   candidateId: z.string(),
-  repoUrl: z.string().url(),
+  repoUrl: z.string(),
+  applicationId:z.string()
+
 });
 
 export type ApplyToJobBody = z.infer<typeof applyToJobBodySchema>;
@@ -25,7 +27,7 @@ export async function POST(request: Request) {
     }
 
     const response = await fetch(
-      `${envs.BASE_URL}/api/candidate/apply-to-job`,
+      `${envs.BASE_URL}/candidate/apply-to-job`,
       {
         method: "POST",
         headers: {

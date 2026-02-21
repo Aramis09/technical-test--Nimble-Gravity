@@ -1,6 +1,6 @@
 "use client";
 
-import { ComponentProps, useState } from "react";
+import { ComponentProps, useRef, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -28,6 +28,7 @@ type CareersListProps = ComponentProps<"div">;
 
 export default function CareersList({ className, ...props }: CareersListProps) {
   const [repoUrls, setRepoUrls] = useState<Record<string, string>>({});
+  const [careerSending, setCareerSending] = useState<string>("");
 
   //! I did not destructure the data of the queries and mutations because react compiler will not work that way.
   const careersQueryData = useGetCareersQuery();
@@ -35,6 +36,8 @@ export default function CareersList({ className, ...props }: CareersListProps) {
   const mutation = useApplyCareerMutation();
 
   const handleSubmit = async (careerId: string) => {
+    setCareerSending(careerId);
+
     const repoUrl = repoUrls[careerId];
 
     if (!repoUrl) {
@@ -55,6 +58,7 @@ export default function CareersList({ className, ...props }: CareersListProps) {
       candidateId: candidateResponse.candidateId,
       jobId: careerId,
       uuid: candidateResponse.uuid,
+      applicationId: candidateResponse.applicationId,
     });
   };
 
@@ -95,7 +99,9 @@ export default function CareersList({ className, ...props }: CareersListProps) {
               disabled={mutation.isPending}
               onClick={() => handleSubmit(career.id)}
             >
-              {mutation.isPending ? "Submitting..." : "Submit"}
+              {mutation.isPending && careerSending === career.id
+                ? "Submitting..."
+                : "Submit"}
             </Button>
           </CardContent>
         </Card>

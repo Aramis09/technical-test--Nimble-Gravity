@@ -1,3 +1,4 @@
+import { ApplyToJobBody } from "@/app/api/careers/apply/route";
 import { Career,careerSchema } from "@/app/api/careers/career.mapper";
 
 const getBaseUrl = ()=>typeof window === "undefined" ? process.env.NEXT_PUBLIC_APP_URL : "";
@@ -12,17 +13,11 @@ export const getCareers = async ():Promise<Career[]> => {
 };
 
 
-export interface ApplyToCareerPayload {
-  uuid: string;
-  jobId: string;
-  candidateId: string;
-  repoUrl: string;
-}
 
 export async function applyToCareer(
-  payload: ApplyToCareerPayload
+  payload: ApplyToJobBody
 ) {
-  const response = await fetch("/api/candidate/apply", {
+  const response = await fetch("/api/careers/apply", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

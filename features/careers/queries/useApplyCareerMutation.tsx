@@ -1,10 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { applyToCareer, ApplyToCareerPayload } from "../services";
+import { applyToCareer } from "../services";
 
 export const useApplyCareerMutation = () =>
   useMutation({
-    mutationFn: (payload: ApplyToCareerPayload) => applyToCareer(payload),
+    mutationFn: applyToCareer,
     onSuccess: () => {
       toast.success("Application sent 🚀");
     },
