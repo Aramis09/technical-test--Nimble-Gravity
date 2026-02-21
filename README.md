@@ -74,5 +74,6 @@
 
  - Email: aramisjaime48@gmail.com
 
+<img width="1920" height="1080" alt="Screenshot from 2026-02-21 05-45-07" src="https://github.com/user-attachments/assets/c974d9f0-5a18-4220-83e7-69454053921a" />
 
  ---
