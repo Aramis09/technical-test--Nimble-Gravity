@@ -29,6 +29,7 @@ type CareersListProps = ComponentProps<"div">;
 export default function CareersList({ className, ...props }: CareersListProps) {
   const [repoUrls, setRepoUrls] = useState<Record<string, string>>({});
 
+  //! I did not destructure the data of the queries and mutations because react compiler will not work that way.
   const careersQueryData = useGetCareersQuery();
 
   const mutation = useApplyCareerMutation();
@@ -45,8 +46,8 @@ export default function CareersList({ className, ...props }: CareersListProps) {
       email: userData.email,
     });
 
-    if (!isValidUrl(repoUrl)){
-      return toast.error(`Repository URL "${repoUrl}" must be a link`)
+    if (!isValidUrl(repoUrl)) {
+      return toast.error(`Repository URL "${repoUrl}" must be a link`);
     }
 
     mutation.mutate({
