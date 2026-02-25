@@ -9,4 +9,4 @@ select *  from transactions where merchantid = '7142574';
 select *  
 from transactions 
 where merchantid = '7142574' 
-and description LIKE 'M%' order by amount ASC  limit 1;
+and description LIKE 'M%' order by amount DESC  limit 1;
